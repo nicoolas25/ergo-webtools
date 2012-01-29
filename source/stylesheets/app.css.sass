@@ -51,3 +51,15 @@ $vk_numbers_color: black
         cursor: pointer
         background: invert($vk_numbers_background)
         color: invert($vk_numbers_color)
+
+$posop_cell_size: 3em
+
+div#posop
+  td
+    vertical-align: center
+    text-align: center
+    width: $posop_cell_size
+    height: $posop_cell_size
+    border: 1px solid gray
+    &.selected
+      background: yellow

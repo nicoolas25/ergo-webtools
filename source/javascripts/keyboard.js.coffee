@@ -1,48 +1,40 @@
 #= require "app"
 
 DOMEvent.defineKeys
-  '96':  'numpad_0'
-  '97':  'numpad_1'
-  '98':  'numpad_2'
-  '99':  'numpad_3'
-  '100':  'numpad_4'
-  '101': 'numpad_5'
-  '102': 'numpad_6'
-  '103': 'numpad_7'
-  '104': 'numpad_8'
-  '105': 'numpad_9'
-  '106': 'numpad_*'
-  '107': 'numpad_p'
-  '109': 'numpad_-'
-  '110': 'numpad_.'
-  '111': 'numpad_/'
+  '96':  '0'
+  '97':  '1'
+  '98':  '2'
+  '99':  '3'
+  '100': '4'
+  '101': '5'
+  '102': '6'
+  '103': '7'
+  '104': '8'
+  '105': '9'
+  '106': '*'
+  '107': 'plus'
+  '109': '-'
+  '110': '.'
+  '111': '/'
 
 keyboard = new Keyboard
   defaultEventType: 'keyup'
   active: true
 
-input = null
-add_to_input = (str) ->
-  ->
-    console.log str
-    input.setProperty("value", input.getProperty("value") + str)
-
 Key = new Class
-  initialize: (node) ->
-    text = node.get "text"
-    shortcut = node.get("data-key") ? "numpad_#{text}"
-    activation_fn = add_to_input(text)
+  initialize: (node, fun) ->
+    if node.get?
+      shortcut = node.get("data-key") ? node.get("text")
+      node.addEvent 'click', fun
+    else
+      shortcut = node
+    
+    keyboard.addShortcut shortcut, { keys: shortcut, handler: fun }
+    return null
 
-    # Keyboard shortcut
-    keyboard.addShortcut text,
-      keys: shortcut
-      description: "Add #{text} to the input."
-      handler: activation_fn
+(exports ? this).Key = Key
 
-    # Click function
-    node.addEvent 'click', activation_fn
-
+window.removeEvents("load")
 window.addEvent "load", ->
-  input = $$("#vk_numbers_target")
-  keys = $$(".key").map (key) -> new Key key
+  keys = $$(".key").map (key) -> new Key(key, -> console.log key.get('text'))
 
