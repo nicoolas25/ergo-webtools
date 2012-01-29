@@ -1,0 +1,53 @@
+@import "compass"
+
+$link-color:         #0388a6
+$link-hover-color:   #009ce0
+$link-focus-color:   false
+$link-active-color:  false
+$link-visited-color: false
+
+$font-color:  #2a2a2a
+$font-family: sans-serif
+$base-font-size:   12px
+$base-line-height: 18px
+
+$total-cols: 12
+$col-width: 4em
+$gutter-width: 1em
+$side-gutter-width: $gutter-width
+
+@include global-reset
+
+body
+  font-family: $font-family
+  color: $font-color
+
+a
+  +hover-link
+  +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
+
+#main
+  padding: 50px
+
+@mixin one-line-centered($height)
+  line-height: $height
+  text-align: center
+
+$vk_numbers_button_size: 3em
+$vk_numbers_background: rgb(200,220,220)
+$vk_numbers_color: black
+
+#vk_numbers
+  ul
+    +inline-block-list
+    li
+      border: 1px solid black
+      margin: 2px
+      width: $vk_numbers_button_size
+      +one-line-centered($vk_numbers_button_size)
+      background: $vk_numbers_background
+      font-weight: bold
+      &:hover
+        cursor: pointer
+        background: invert($vk_numbers_background)
+        color: invert($vk_numbers_color)
