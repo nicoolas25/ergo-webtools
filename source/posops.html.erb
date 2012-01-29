@@ -2,72 +2,148 @@
   <%= javascript_include_tag "wposops" %>
   <title>Posop web</title>
 <% end%>
-
-<div id="posop">
-  <table>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>5</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
+<div id="posop_commands">
+  <button id="posop_clear">Vider</button>
+  <button id="posop_convert">Exporter</button>
 </div>
 <hr />
-<div id="vk_numbers">
-  <ul>
-    <li class="key">7</li>
-    <li class="key">8</li>
-    <li class="key">9</li>
-    <li class="key">/</li>
-  </ul>
-  <ul>
-    <li class="key">4</li>
-    <li class="key">5</li>
-    <li class="key">6</li>
-    <li class="key">*</li>
-  </ul>
-  <ul>
-    <li class="key">1</li>
-    <li class="key">2</li>
-    <li class="key">3</li>
-    <li class="key">-</li>
-  </ul>
-  <ul>
-    <li>&nbsp;</li>
-    <li class="key">0</li>
-    <li class="key">.</li>
-    <li class="key" data-key="plus">+</li> <!-- I need to specify the data-key to use for this keyboard shortcut. -->
-  </ul>
+<div id="posop">
+  <div id="posop_table">
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <canvas id="posop_canvas" width="300" height="150">
+    Fallback content, in case the browser does not support Canvas.
+  </canvas>
+  <div id="posop_export"><img /></div>
+  <div class="clearfix"></div>
+</div>
+<hr />
+<div id="posop_keyboards">
+  <div id="vk_numbers">
+    <ul>
+      <li class="key">7</li>
+      <li class="key">8</li>
+      <li class="key">9</li>
+      <li class="key">/</li>
+    </ul>
+    <ul>
+      <li class="key">4</li>
+      <li class="key">5</li>
+      <li class="key">6</li>
+      <li class="key">*</li>
+    </ul>
+    <ul>
+      <li class="key">1</li>
+      <li class="key">2</li>
+      <li class="key">3</li>
+      <li class="key">-</li>
+    </ul>
+    <ul>
+      <li class="key" data-key="backspace"></li>
+      <li class="key">0</li>
+      <li class="key">.</li>
+      <li class="key" data-key="plus">+</li> <!-- I need to specify the data-key to use for this keyboard shortcut. -->
+    </ul>
+  </div>
+  <div id="vk_arrows">
+    <ul>
+      <li class="key" data-key="left">&larr;</li>
+      <li class="key" data-key="down">&darr;</li>
+      <li class="key" data-key="up">&uarr;</li>
+      <li class="key" data-key="right">&rarr;</li>
+    </ul>
+    <ul>
+      <li id="equal">=</li>
+      <li id="left-line">|</li>
+      <li id="bottom-line">&mdash;</li>
+    </ul>
+  </div>
+  </div>
 </div>
 

@@ -29,15 +29,19 @@ a
 #main
   padding: 50px
 
+.clearfix
+  clear: both
+
 @mixin one-line-centered($height)
   line-height: $height
+  height: $height
   text-align: center
 
 $vk_numbers_button_size: 3em
 $vk_numbers_background: rgb(200,220,220)
 $vk_numbers_color: black
 
-#vk_numbers
+#vk_numbers, #vk_arrows
   ul
     +inline-block-list
     li
@@ -47,12 +51,15 @@ $vk_numbers_color: black
       +one-line-centered($vk_numbers_button_size)
       background: $vk_numbers_background
       font-weight: bold
+      -moz-user-select: none
+      -khtml-user-select: none
       &:hover
         cursor: pointer
         background: invert($vk_numbers_background)
         color: invert($vk_numbers_color)
 
 $posop_cell_size: 3em
+$posop_cell_color: #FFE773
 
 div#posop
   td
@@ -60,6 +67,27 @@ div#posop
     text-align: center
     width: $posop_cell_size
     height: $posop_cell_size
-    border: 1px solid gray
+    border: 1px dashed black
+    font-weight: bold
+    &:nth-child(even)
+      background: lighten(complement($posop_cell_color), 15%)
+    &:nth-child(odd)
+      background: $posop_cell_color
     &.selected
+      border: 2px dashed black
       background: yellow
+    &.bottom-line
+      border-bottom: 2px solid black
+    &.left-line
+      border-left: 2px solid black
+  div#posop_export, div#posop_table
+    float: left
+
+
+#posop_canvas
+  display: none
+
+div#posop_keyboards
+  div
+    float: left
+    padding: 5px

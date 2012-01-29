@@ -1,6 +1,7 @@
 #= require "app"
 
 DOMEvent.defineKeys
+  '61':  '='
   '96':  '0'
   '97':  '1'
   '98':  '2'
