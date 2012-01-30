@@ -94,6 +94,12 @@ Posop = new Class
           ctx.lineTo(real_y * 30 + 45, real_x * 30 + 40)
           ctx.stroke()
           ctx.fill()
+        if cell.node.hasClass("left-line")
+          ctx.beginPath()
+          ctx.moveTo(real_y * 30 + 15, real_x * 30 + 10)
+          ctx.lineTo(real_y * 30 + 15, real_x * 30 + 40)
+          ctx.stroke()
+          ctx.fill()
 
     img.setProperty("src", canvas.toDataURL())
 
