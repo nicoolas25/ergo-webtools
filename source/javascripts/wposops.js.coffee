@@ -77,6 +77,8 @@ Posop = new Class
     console.log(canvas.height = (end.x - begin.x) * 30 + 60)
     ctx = canvas.getContext("2d")
     ctx.clearRect(0,0,canvas.width,canvas.height)
+    ctx.fillStyle = "rgb(255,255,255)"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.font = "12pt sans-serif"
     ctx.fillStyle = "rgb(0,0,0)"
 
