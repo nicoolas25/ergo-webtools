@@ -32,6 +32,9 @@ a
 .clearfix
   clear: both
 
+.hidden
+  display: none
+
 @mixin one-line-centered($height)
   line-height: $height
   height: $height
@@ -91,3 +94,12 @@ div#posop_keyboards
   div
     float: left
     padding: 5px
+
+div#posop_options, div#posop_commands
+  button.btn
+    height: 3em
+    font-weight: bold
+    &.toggle
+      color: gray
+      &.toggled
+        color: black

@@ -123,10 +123,41 @@ Posop = new Class
           max_x = Math.max(max_x, x)
           max_y = Math.max(max_y, y)
     return @cells[max_x][max_y]
- 
+
+Option = new Class
+  initialize: (name, init) ->
+    @name = name
+    @store = window.localStorage
+    @set_val(@store.getItem(@name) ? init)
+
+  set_val: (value) ->
+    @val = value
+    @store.setItem(@name, @val)
+
+ToggleOption = new Class
+  Extends: Option
+  initialize: (name, init, target, onToggle) ->
+    @parent(name, init)
+    @target = target
+    @onToggle = onToggle
+    @val = @val is "true"
+    if ( @val and not @target.hasClass("toggled") ) or ( @target.hasClass("toggled") and not @val )
+      @toggle(@val)
+    @target.addEvent "click", => @toggle()
+    return null
+
+  toggle: (val) ->
+    @set_val(val ? not @val)
+    @target.toggleClass "toggled"
+    @onToggle.call(this) if @onToggle
+
 window.removeEvents("load")
 window.addEvent "load", ->
+  options = { display_opts: new ToggleOption("posop_display_opts", false, $("posop_display_opts"), -> $$("#posop_options").toggleClass "hidden")
+            , automove: new ToggleOption("posop_option_automove", true, $("posop_option_automove")) }
+
   canvas = document.getElementById('posop_canvas')
+  
   po = new Posop $$("div#posop table")[0]
   
   $$("#vk_arrows .key").map (key) ->
@@ -137,19 +168,19 @@ window.addEvent "load", ->
     new Key key, ->
       text = key.get('text')
       po.current_cell().write text
-      po.move_to "right"
+      po.move_to "right" if options.automove.val
 
   $$("#left-line").addEvent "click", ->
     po.current_cell().toggle_left_line()
-    po.move_to "down"
+    po.move_to "down" if options.automove.val
 
   $$("#bottom-line").addEvent "click", ->
     po.current_cell().toggle_bottom_line()
-    po.move_to "right"
+    po.move_to "right" if options.automove.val
 
   $$("#equal").addEvent "click", ->
     po.current_cell().write "="
-    po.move_to "right"
+    po.move_to "right" if options.automove.val
 
   $$("#posop_clear").addEvent "click", -> po.clear()
   
