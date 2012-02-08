@@ -89,7 +89,14 @@ Posop = new Class
         real_x = x - begin.x
         real_y = y - begin.y
         if text isnt ""
-          ctx.fillText(text, real_y * 30 + 24, real_x * 30 + 30)
+          if cell.node.hasClass("retenue")
+            ctx.fillStyle = "rgb(100,100,100)"
+            ctx.font = "10pt sans-serif"
+            ctx.fillText(text, real_y * 30 + 24, real_x * 30 + 40)
+            ctx.fillStyle = "rgb(0,0,0)"
+            ctx.font = "12pt sans-serif"
+          else
+            ctx.fillText(text, real_y * 30 + 24, real_x * 30 + 30)
         if cell.node.hasClass("bottom-line")
           ctx.beginPath()
           ctx.moveTo(real_y * 30 + 15, real_x * 30 + 40)

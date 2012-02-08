@@ -72,6 +72,7 @@ div#posop
     height: $posop_cell_size
     border: 1px dashed black
     font-weight: bold
+    padding: 3px
     &:nth-child(even)
       background: lighten(complement($posop_cell_color), 15%)
     &:nth-child(odd)
@@ -83,6 +84,14 @@ div#posop
       border-bottom: 2px solid black
     &.left-line
       border-left: 2px solid black
+    &.retenue
+      vertical-align: bottom
+      color: lighten(black,30%)
+      &:nth-child(even)
+        background: lighten(complement($posop_cell_color), 20%)
+      &:nth-child(odd)
+        background: lighten($posop_cell_color, 5%)
+
   div#posop_export, div#posop_table
     float: left
 
